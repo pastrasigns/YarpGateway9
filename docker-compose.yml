@@ -1,0 +1,32 @@
+services:
+
+  yarpgateway:
+    image: ${DOCKER_REGISTRY-}yarpgateway9
+    container_name: yarpgateway
+    build:
+      context: .
+      dockerfile: YarpGateway9/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    networks:
+       - proxybackend
+
+
+  weatherapi:
+    image: ${DOCKER_REGISTRY-}weatherapi9
+    container_name: weatherapi
+    build:
+      context: .
+      dockerfile: WeatherAPI9/Dockerfile
+    ports:
+      - "5100:5100"
+      - "5101:5101"
+    networks:
+       - proxybackend
+
+
+networks:
+  proxybackend:
+    name: proxybackend
+    driver: bridge
