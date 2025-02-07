@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,8 +26,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
